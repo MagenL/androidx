@@ -64,8 +64,9 @@ class FocusRequester {
         replaceWith = ReplaceWith("this.requestFocus()"),
         level = DeprecationLevel.HIDDEN
     )
-    fun requestFocus() {
-        requestFocus(Enter)
+    fun requestFocus(): Boolean {
+        
+        return requestFocus(Enter)
     }
 
     /**
