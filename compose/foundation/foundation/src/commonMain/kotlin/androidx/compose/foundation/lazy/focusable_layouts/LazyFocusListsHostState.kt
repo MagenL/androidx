@@ -128,10 +128,9 @@ class LazyFocusListsHostState(
                         0
                     )
                 )
-            } else {
-                // request focus twice to force remeasure the list before focusing to the target
-                requestFocus(columnIndexToScroll, row)
             }
+            // request focus twice to force remeasure the list before focusing to the target
+            requestFocus(columnIndexToScroll, row)
         }
         return requestFocus(columnIndexToScroll, row)
     }
