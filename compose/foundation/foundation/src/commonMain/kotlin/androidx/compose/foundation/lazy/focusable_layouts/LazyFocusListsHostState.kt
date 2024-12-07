@@ -122,15 +122,12 @@ class LazyFocusListsHostState(
             if (selectedColumn.lazyList.layoutInfo.visibleItemsInfo.find { it.index == row } == null) {
                 // request focus to the first visible item is not possible, after request focus the list is remeasure it self and move the focus to the first item on the left.
                 // to solve this issue, we need to target the requested item to be the last visible item after scroll
-//                childrenLazyLists[columnIndex].lazyList.scrollToItem(row)
-                childrenLazyLists[columnIndex].lazyList.scrollToItem(
-                    (row - (childrenLazyLists[columnIndex].lazyList.layoutInfo.visibleItemsInfo.size - 1)).coerceAtLeast(
-                        0
-                    )
-                )
+                childrenLazyLists[columnIndex].lazyList.scrollToItem(row)
+            } else {
+                // request focus twice to force remeasure the list before focusing to the target
+                requestFocus(columnIndexToScroll, row)
             }
-            // request focus twice to force remeasure the list before focusing to the target
-            requestFocus(columnIndexToScroll, row)
+
         }
         return requestFocus(columnIndexToScroll, row)
     }
